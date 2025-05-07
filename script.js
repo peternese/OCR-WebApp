@@ -123,12 +123,23 @@ function onResults(results) {
       } else if (gesture && (now - gestureStartTime >= GESTURE_HOLD_DURATION)) {
         // Geste stabil genug → nur reagieren, wenn sie noch nicht angezeigt wurde
         if (gesture !== lastDisplayedGesture) {
-            outputText.innerText = `${gesture} erkannt!`;
             lastDisplayedGesture = gesture;
-          
-            // Setze den passenden Gradient
-            const gradient = gestureGradients[gesture] || 'linear-gradient(to bottom, #ffffff, #dddddd)';
-            document.documentElement.style.background = gradient;
+
+            const overlay = document.getElementById('transitionOverlay');
+
+// Reset Animation
+overlay.classList.remove('animate');
+void overlay.offsetWidth; // reflow trick
+
+overlay.classList.add('animate');
+
+// Setze neuen Background nach 400ms (50% von 0.8s Animation)
+setTimeout(() => {
+  const gradient = gestureGradients[gesture] || 'linear-gradient(to bottom, #ffffff, #dddddd)';
+  document.documentElement.style.background = gradient;
+  outputText.innerText = `${gesture} erkannt!`;
+}, 400);
+
           }
           
       } else if (!gesture) {

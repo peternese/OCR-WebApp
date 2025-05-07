@@ -25,4 +25,32 @@ body {
     color: grey;
   }
   
+  #transitionOverlay {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: white; /* oder black */
+    z-index: 9999;
+    transition: none;
+    pointer-events: none;
+  }
+  
+  #transitionOverlay.animate {
+    animation: swipeOverlay 0.8s ease-in-out forwards;
+  }
+  
+  @keyframes swipeOverlay {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 0%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  
   
