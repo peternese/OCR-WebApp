@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta property="og:image" content="resources/thumbnail.png">
+  <link rel="icon" type="image/png" href="resources/thumbnail.png">
+  <title>Handgesten Demo</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <h1 id="headline">✋ Handgestenerkennung</h1>
+  <h4 class="infotext">(Entwicklung mittels MediaPipe Anbindung und Implementierung eines Regelwerkes zur Erkennung von 8 Gesten)</h4>
+  <h4 class="infotext">✌️✊✋👆🤙🤘👉🖕</h4>
+  <h3 id="subheadline">Klicke auf den Button unten & erlaube Deinem Gerät einen Kamerazugriff um Deine Handgeste zu erkennen!</h3>
+  <video style="display:none" id="webcam" autoplay playsinline></video>
+  <button id="clickbutton">Starte Handgestenerkennung</button>
+  <canvas style="display:none" id="output_canvas"></canvas>
+  <h1 style="display:none" id="output">❌ Keine Hand erkannt</h1>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

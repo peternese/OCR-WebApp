@@ -1,0 +1,30 @@
+html {
+    background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to bottom, #FFFFFF, #6DD5FA, #2980B9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background-repeat: no-repeat;
+height: 100%;
+transition: background-color 1s;
+
+}
+body {
+    margin-top: 3rem;
+    text-align: center;
+    font-family: sans-serif;
+  }
+  
+  video, canvas {
+    width: 640px;
+    height: 480px;
+    margin-top: 10px;
+    transform: scaleX(-1); /* Spiegelung */
+    margin: auto;
+    border-radius: 20px;
+  }
+
+  .infotext{
+    font-size: 8px;
+    color: grey;
+  }
+  
+  
