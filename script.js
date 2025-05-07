@@ -4,6 +4,17 @@ const canvasCtx = canvasElement.getContext('2d');
 const outputText = document.getElementById('output');
 const clickbutton = document.getElementById('clickbutton');
 
+const gestureGradients = {
+    '✌️ Peace': 'linear-gradient(to bottom, #ffffff, #d4fc79, #96e6a1)',
+    '✊ Faust': 'linear-gradient(to bottom, #ffffff, #f7797d, #FBD786)',
+    '✋ Offene Hand': 'linear-gradient(to bottom, #ffffff, #6dd5ed, #2193b0)',
+    '👆 Zeigefinger': 'linear-gradient(to bottom, #ffffff, #ffecd2, #fcb69f)',
+    '🤙 Shaka': 'linear-gradient(to bottom, #ffffff, #fbc2eb, #a6c1ee)',
+    '🤘 Rock': 'linear-gradient(to bottom, #ffffff, #fbd3e9, #bb377d)',
+    '🖕 Mittelfinger': 'linear-gradient(to bottom, #ffffff, #e96443, #904e95)',
+    '👉 Zeigefinger + Daumen': 'linear-gradient(to bottom, #ffffff, #c2e9fb, #81a4fd)'
+  };  
+
 // Globale Variablen
 let currentGesture = null;
 let gestureStartTime = null;
@@ -112,17 +123,22 @@ function onResults(results) {
       } else if (gesture && (now - gestureStartTime >= GESTURE_HOLD_DURATION)) {
         // Geste stabil genug → nur reagieren, wenn sie noch nicht angezeigt wurde
         if (gesture !== lastDisplayedGesture) {
-          outputText.innerText = `${gesture} erkannt!`;
-        //   document.body.style.backgroundColor = '#e0f7fa'; // z. B. light cyan
-          lastDisplayedGesture = gesture;
-        }
+            outputText.innerText = `${gesture} erkannt!`;
+            lastDisplayedGesture = gesture;
+          
+            // Setze den passenden Gradient
+            const gradient = gestureGradients[gesture] || 'linear-gradient(to bottom, #ffffff, #dddddd)';
+            document.documentElement.style.background = gradient;
+          }
+          
       } else if (!gesture) {
         // Keine Geste erkannt → zurücksetzen
         currentGesture = null;
         gestureStartTime = null;
         lastDisplayedGesture = null;
         outputText.innerText = '🖐️ Hand erkannt, aber keine definierte Geste';
-        // document.body.style.backgroundColor = 'white';
+        document.documentElement.style.background = 'linear-gradient(to bottom, #ffffff, #6DD5FA, #2980B9)';
+        
       }
       
     }
